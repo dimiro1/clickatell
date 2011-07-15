@@ -26,17 +26,17 @@ end
 
 task :default => :spec
 
-require "spec"
-require "spec/rake/spectask"
+require "rspec"
+#require "rspec/rake/spectask"
 
 Spec::Rake::SpecTask.new do |t|
-  t.spec_opts = %w(--format specdoc --colour)
-  t.libs = ["spec"]
+  #t.spec_opts = %w(--format specdoc --colour)
+  #t.libs = ["spec"]
 end
 
 Spec::Rake::SpecTask.new("spec_html") do |t|
-  t.spec_opts = %w(--format html)
-  t.libs = ["spec"]
+  #t.spec_opts = %w(--format html)
+  #t.libs = ["spec"]
 end
 
 # Rake::RDocTask.new do |rd|

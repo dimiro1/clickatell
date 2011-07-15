@@ -118,6 +118,11 @@ module Clickatell
       parse_response(response)['charge'].to_f
     end
 
+    def route_coverage(recipient)
+      response = execute_command('routeCoverage.php', 'utils', :msisdn => recipient)
+      parse_response(response)['charge'].to_f
+    end
+
     # Returns the number of credits remaining as a float.
     def account_balance
       response = execute_command('getbalance', 'http')

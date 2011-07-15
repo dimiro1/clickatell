@@ -178,6 +178,12 @@ module Clickatell
       @api.account_balance.should == 10.0
     end
 
+    it "should support coverage query, returning charge as a float" do
+      @executor.expects(:execute).with('routeCoverage.php', 'utils', {}).returns(response=mock('response'))
+      Response.stubs(:parse).with(response).returns('charge' => '2.0')
+      @api.route_coverage('558694193798').should == 2.0
+    end
+
     it "should raise an API::Error if the response parser raises" do
       @executor.stubs(:execute)
       Response.stubs(:parse).raises(Clickatell::API::Error.new('', ''))
